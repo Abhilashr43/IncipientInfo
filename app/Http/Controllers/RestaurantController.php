@@ -33,7 +33,7 @@ class RestaurantController extends Controller
             $filenameWithExt = $restaurantRequest->file('image')->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $restaurantRequest->file('image')->getClientOriginalExtension();
-            $fileNameToStore = $filename . '_' . time() . '' . $extension;
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
             $path = $restaurantRequest->file('image')->storeAs('public/image', $fileNameToStore);
             $imageData = ['name' => $filename, 'url' => $path, 'restaurant_id' => $restaurant->id];
             RestaurantImage::create($imageData);
